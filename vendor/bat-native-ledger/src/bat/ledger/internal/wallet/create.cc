@@ -110,7 +110,7 @@ void Create::RequestCredentialsCallback(
       const std::string& response,
       const std::map<std::string, std::string>& headers,
       ledger::ResultCallback callback) {
-  ledger_->LogResponse(__func__, response_status_code, response, headers);
+  BLOG(6, ledger::ToString(__func__, response_status_code, response, headers));
 
   if (response_status_code != net::HTTP_OK) {
     callback(ledger::Result::BAD_REGISTRATION_RESPONSE);
@@ -214,7 +214,7 @@ void Create::RegisterPersonaCallback(
       const std::string& response,
       const std::map<std::string, std::string>& headers,
       ledger::ResultCallback callback) {
-  ledger_->LogResponse(__func__, response_status_code, response, headers);
+  BLOG(6, ledger::ToString(__func__, response_status_code, response, headers));
 
   if (response_status_code != net::HTTP_OK) {
     callback(ledger::Result::BAD_REGISTRATION_RESPONSE);
